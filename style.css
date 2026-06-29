@@ -67,7 +67,7 @@ body {
     width: 100%;
     height: 100vh;
     /* Yahan pehle image.jpg tha, ab sahi naam image_2.jpg kar diya hai */
-    background: url('image_2.jpg') no-repeat;
+    background: url('image.jpg') no-repeat;
     background-size: cover;
     background-position: center;
     display: flex;
