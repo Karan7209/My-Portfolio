@@ -9,6 +9,7 @@
 body {
     color: #ededed;
     background: #081b29;
+    overflow-x: hidden; /* Screen size strict control to prevent breaking */
 }
 
 /* HEADER / NAVIGATION */
@@ -33,6 +34,13 @@ body {
     font-weight: 600;
     opacity: 0;
     animation: slideRight 1s ease forwards;
+}
+
+#menu-icon {
+    font-size: 36px;
+    color: #fff;
+    cursor: pointer;
+    display: none; /* Desktop par hidden rahega */
 }
 
 .navbar a {
@@ -354,7 +362,7 @@ section {
     font-family: sans-serif;
 }
 
-/* PORTFOLIO / PROJECTS SECTION (MATCHED TO SCREENSHOT 55) */
+/* PORTFOLIO / PROJECTS SECTION */
 .portfolio {
     background: #112e42;
 }
@@ -368,16 +376,10 @@ section {
 
 .portfolio-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-    .portfolio-container {
-        grid-template-columns: 1fr;
-    }
 }
 
 .portfolio-box {
@@ -419,7 +421,7 @@ section {
     letter-spacing: 0.5px;
 }
 
-/* CONTACT SECTION (EXACT ALIGNMENT MATCHED TO SCREENSHOT 56) */
+/* CONTACT SECTION */
 .contact {
     background: #081b29;
 }
@@ -523,4 +525,103 @@ section {
 @keyframes slideBottom {
     0% { transform: translateY(-100px); opacity: 0; }
     100% { transform: translateY(0px); opacity: 1; }
+}
+
+
+/* =================================================== */
+/* 📱 SMARTPHONES & TABLETS RESPONSIVENESS BREAKPOINT  */
+/* =================================================== */
+
+@media (max-width: 991px) {
+    section {
+        padding: 80px 5% 60px;
+    }
+    .header {
+        padding: 20px 5%;
+    }
+    .home {
+        padding: 0 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    #menu-icon {
+        display: block; /* Hamburger Button ab dikhega */
+    }
+
+    /* Mobile Floating Navbar Design */
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        width: 100%;
+        padding: 20px 5%;
+        background: rgba(8, 27, 41, 0.98);
+        border-top: 1px solid rgba(0, 238, 255, 0.1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        transition: .3s ease;
+    }
+
+    /* Jab javascript toggle trigger karegi */
+    .navbar.open {
+        left: 0;
+    }
+
+    .navbar a {
+        display: block;
+        margin: 20px 0;
+        font-size: 20px;
+        opacity: 1;
+        animation: none; /* Mobile par stack freeze handle */
+    }
+
+    /* Home Layout Vertical Adjust */
+    .home {
+        height: auto;
+        padding-top: 150px;
+        padding-bottom: 80px;
+    }
+    .home-content h1 {
+        font-size: 40px;
+    }
+    .home-content h3 {
+        font-size: 24px;
+    }
+
+    /* About Section Grid Re-alignment */
+    .about {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 3rem;
+    }
+    .about-img img {
+        width: 65vw;
+        position: relative;
+        top: 0;
+    }
+    .service-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Headings adjustments for mobile view */
+    .heading {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+
+    /* Portfolio Items layout fix */
+    .portfolio-container {
+        grid-template-columns: 1fr;
+    }
+    .portfolio-box {
+        height: 240px;
+    }
+
+    /* Contact layout constraints */
+    .contact-card-container {
+        padding: 25px 20px;
+    }
 }
