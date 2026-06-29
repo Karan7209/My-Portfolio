@@ -7,7 +7,16 @@ var typed = new Typed(".text", {
     loop: true
 });
 
-// Navigation Active Link Highlight on Scroll
+// Mobile Hamburger Menu Toggle
+const menuIcon = document.querySelector('#menu-icon');
+const navbar = document.querySelector('.navbar');
+
+menuIcon.addEventListener('click', () => {
+    menuIcon.classList.toggle('bx-x');
+    navbar.classList.toggle('open');
+});
+
+// Navigation Active Link Highlight on Scroll & Hide Mobile Navbar
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('header nav a');
 
@@ -29,6 +38,10 @@ function updateActiveNav() {
             }
         }
     });
+    
+    // Smoothly close mobile navbar when scrolling starts
+    menuIcon.classList.remove('bx-x');
+    navbar.classList.remove('open');
 }
 
 window.addEventListener('scroll', updateActiveNav);
